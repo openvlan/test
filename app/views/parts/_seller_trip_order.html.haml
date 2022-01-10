@@ -1,0 +1,12 @@
+%h1
+  =t('user_mailer.order.order_id', order_id: order.id)
+= render 'parts/bold_line'
+= render 'parts/order_row', title: t('user_mailer.trip_canceled_email.buyer'), content: order.buyer_company_name
+= render 'parts/order_row', title: t('user_mailer.order.delivery_method'), content: order.delivery_method
+= render 'parts/order_row', title: t('user_mailer.order.delivery_location'), content: location['street_1'] + ', ' + location['city'] + ', ' + location['country']
+= render 'parts/order_row', title: t('user_mailer.order.delivery_date_and_time'), content: t('user_mailer.order.delivery_date_and_time_content')
+= render 'parts/order_row', title: t('user_mailer.order.driver_details'), content: t('user_mailer.order.driver_details_content')
+%tr
+  %td
+    = render partial: 'parts/order_detail', object: order, as: 'order'
+= render 'parts/bold_line'

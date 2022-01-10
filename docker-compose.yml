@@ -1,0 +1,65 @@
+version: "3"
+
+services:
+  logistics-api:
+    image: tikoglobal2/tiko:logistics-api
+    restart: unless-stopped
+    container_name: "logistic-api"
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SSH_PRIVATE_KEY: ${SSH_PRIVATE_KEY}
+    ports:
+      - 3030:3030
+
+  api_ci:
+    image: tikoglobal2/tiko:logistic-api-ci
+    container_name: "logistic-api-ci"
+    build:
+      context: .
+      dockerfile: Dockerfile.rspec
+    environment:
+      DATABASE_HOST: pg_gis_testing
+      DATABASE_NAME: tiko_logistic_api_db_test
+      REDIS_HOST: redis_testing
+      RAILS_LOG_TO_STDOUT: "true"
+    env_file:
+      - .env.test.public
+
+  logistics-api_ci_migrations:
+    image: tikoglobal2/tiko:logistics-api_ci_migrations
+    container_name: ${API_CONTAINER_MIGRATIONS}
+    build:
+      context: .
+      dockerfile: Dockerfile.migrator
+      args:
+        SSH_PRIVATE_KEY: ${SSH_PRIVATE_KEY}
+    environment:
+      DATABASE_HOST: ${PG_CONTAINER_MIGRATIONS}
+      DATABASE_NAME: tiko_logistic_api_db_test
+      REDIS_HOST: ${REDIS_CONTAINER_MIGRATIONS}
+    entrypoint: "rails db:create db:migrate"
+
+  pg_gis_testing:
+    image: mdillon/postgis:10
+    container_name: ${PG_CONTAINER_MIGRATIONS}
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      ALLOW_IP_RANGE: 0.0.0.0/0
+#    volumes:
+#      - ${TIKO_CI_DATA}:/var/lib/postgresql/data
+
+  redis_testing:
+    image: redis:5
+    container_name: ${REDIS_CONTAINER_MIGRATIONS}
+
+networks:
+  default:
+    external:
+      name: custom_network
+
+#volumes:
+#  ${TIKO_CI_DATA}:
+#    external: true

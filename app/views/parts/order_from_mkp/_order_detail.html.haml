@@ -1,0 +1,13 @@
+%h2.bold
+  =t('user_mailer.order.details')
+%div
+  - order.order_items.each do |order_item|
+    = render partial: 'parts/order_from_mkp/order_detail_row', object: order_item, as: 'order_item'
+%div
+- if order.delivery_location.present?
+  = render partial: 'parts/order_from_mkp/order_subtotal', object: order, as: 'order'
+- else
+  %p
+    = "#{ApiUtils::NumberFormatter.new.format(order.total_weight_in_lb, {precision: 0})} lb"
+  %p
+    = "#{order.total_pallets_quantity == 0 ? '-' : order.total_pallets_quantity}"

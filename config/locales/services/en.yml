@@ -1,0 +1,56 @@
+en:
+  services:
+    address:
+      latlng:
+        missing: "The attribute latlng is missing"
+    authenticate:
+      invalid_credentials: Invalid credentials
+    authorize_request:
+      missing_token: Missing authorization token
+    authorize_user:
+      invalid_token: Invalid authorization token
+      not_allowed: The token is not allowed for this action
+    create_delivery:
+      origin:
+        missing_or_invalid: "There is no address with id: %{id} to be the origin of the delivery."
+      destination:
+        missing_or_invalid: "There is no address with id: %{id} to be the destination of the delivery."
+    create_order:
+      giver:
+        missing_or_invalid: "There is no institution with id: %{id} to be the giver."
+      receiver:
+        missing_or_invalid: "There is no institution with id: %{id} to be the receiver."
+    create_payment:
+      order:
+        has_active_payments: "The order with id: %{id} has active payments, please check them before create a new one."
+      delivery:
+        has_active_payments: "The delivery with id: %{id} has active payments, please check them before create a new one."
+    create_trip:
+      initial_origin_id:
+        invalid: "There is no origin with id: %{id}"
+      deliveries:
+        already_assigned: "At least one of the deliveries that you are trying to assign to this trip is already assigned to other trip"
+        missing_or_invalid: "There are no deliveries associated to the order with id: %{id}."
+      order:
+        already_assigned: "At least one of the orders that you are trying to assign to this trip is already assigned to another trip"
+        missing_or_invalid: "There was a problem finding all the orders for the trip There is no order with id: %{id}."
+      shipper:
+        missing_or_invalid: "There is no shipper with id: %{id}."
+    create_verification:
+      information:
+        missing_or_invalid: The information for the %{type_name} is missing. At least one of this values should be present %{allowed_keys}.
+      type:
+        missing_or_invalid: The type of the verification is missing or invalid. For the %{class_name} should be one of this %{allowed_types}.
+    destroy_delivery:
+      delivery_with_trip: "You are not allowed to delete a delivery that is already associated to a trip"
+    destroy_order:
+      delivery_with_trip: "You are not allowed to delete an order that has a delivery already associated to a trip"
+    destroy_package:
+      delivery_with_trip: "You are not allowed to delete a package from a delivery that is already associated to a trip"
+    destroy_trip:
+      trip_on_going: "You are not allowed to delete a trip that is already on going"
+    update_trip:
+      trip_on_going: "You are not allowed to update a trip that the status is %{status}"
+
+    status_emails:
+      no_driver: "There is no driver user with the id: %{id}"

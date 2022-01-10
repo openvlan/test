@@ -1,0 +1,10 @@
+---
+:concurrency: 5
+:queues:
+  - [high_priority, 8]
+  - [default, 4]
+  - [low_priority, 1]
+:verbose: false
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:concurrency:  25

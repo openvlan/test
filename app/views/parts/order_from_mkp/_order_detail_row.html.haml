@@ -1,0 +1,23 @@
+%div{style: 'display: flex; padding-bottom: 10px'}
+  %div{style: 'width: 130px; margin-right: 10px; flex-shrink: 0'}
+    = image_tag order_item.presentation.media.first.url,
+                style: 'max-height: 150px; margin: auto; display: block; max-width: 100%'
+  %div
+    %h3{style: 'margin: 0 0 25px 0'}
+      = "#{order_item.product_full_name} (#{ApiUtils::NumberFormatter.new.format(order_item.presentation.gross_weight_in_lb, {precision: 0})} lb. #{order_item.presentation_full_name})"
+    %div
+      %small.bold.secondary
+        =t('user_mailer.order.quantity')
+      %small.bold
+        = order_item.quantity
+    %div
+      %small.bold.secondary
+        =t('user_mailer.order.total_weight')
+      %small.bold
+        = ApiUtils::NumberFormatter.new.format(order_item.total_weight_in_lb, {precision: 0}) + ' lb'
+    - if order_item.presentation_sell_by_pallets
+      %div
+        %small.bold.secondary
+          = t('user_mailer.order.delivered_in')
+        %small.bold
+          = "#{order_item.quantity} #{t('user_mailer.order.pallet')}"

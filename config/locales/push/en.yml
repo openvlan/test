@@ -1,0 +1,8 @@
+en: 
+  push: 
+    notification: 
+      messages: 
+        pending_driver_confirmation: 'You have an assigned trip on TIKO! Go into the app to take it.'
+        broadcasting: 'There is a new trip on TIKO! Go into the app to take it.'
+        canceled: "The trip #%{id} has been canceled"
+        edition: "The trip #%{id} has been modified"

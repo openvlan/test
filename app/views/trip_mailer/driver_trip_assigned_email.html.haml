@@ -1,0 +1,8 @@
+%p #{I18n.t("push.notification.messages.pending_driver_confirmation")}
+%br
+%a{href: @view_trip_link, target: '_blank'}
+  %button.primary
+    =t('user_mailer.driver_trip_assigned_email.view_trip')
+
+
+= render :partial => 'parts/order_contact_footer'

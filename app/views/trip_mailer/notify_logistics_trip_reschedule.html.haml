@@ -1,0 +1,10 @@
+%table.em_main_table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "table-layout: fixed;", :width => "100%"}
+  %tr
+    %td
+      =t('user_mailer.shipper_changed.logistics.old_trip', old_trip_number: @old_trip.trip_number)
+  %tr
+    %td
+      =t('user_mailer.shipper_changed.logistics.new_trip', new_trip_number: @new_trip.trip_number)
+
+
+= render :partial => 'parts/order_contact_footer'

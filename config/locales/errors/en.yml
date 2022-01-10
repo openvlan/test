@@ -1,0 +1,39 @@
+en:
+  errors:
+    not_found:
+      address: "There is no address with id: %{address_id} for the institution id: %{institution_id}"
+      company: "There is no company with id: %{id}"
+      driver: "There is no driver with id: %{id}"
+      delivery: "There is no delivery with id: %{id}"
+      delivery_on_order: "There is no delivery with id: %{delivery_id} for the order id: %{order_id}"
+      institution: "There is no institution with id: %{id}"
+      order: "There is no order with id: %{id}"
+      package: "There is no package with id: %{package_id} for the delivery id: %{delivery_id}"
+      payment_on_payable:
+        delivery: "There is no payment with id: %{payment_id} for the delivery id: %{payable_id}"
+        order: "There is no payment with id: %{payment_id} for the order id: %{payable_id}"
+      shipper: "There is no shipper with id: %{id}"
+      trip: "There is no trip with id: %{id}"
+      user: "There is no user with id: %{user_id} for the institution id: %{institution_id}"
+      vehicle: "There is no vehicle with id: %{id}"
+      verification: "There is no verification with id: %{verification_id} for the vehicle id: %{vehicle_id}"
+      warehouse: "Warehouse with id: %{warehouse_id} not found"
+      buyer_company: "Buyer company with id: %{buyer_company_id} not found"
+    missing:
+      delivery: The delivery is missing, you should send the delivery_id as a parameter
+      institution: The institution is missing, you should send the institution_id as a parameter
+      order: The order is missing, you should send the order_id as a parameter
+      shipper: The shipper is missing, you should send the shipper_id as a parameter
+      vehicle: The vehicle is missing, you should send the vehicle_id as a parameter
+    params:
+      trip_payments:
+        missing_confirmation_code: The confirmation code is required to mark as paid
+        confirmation_code_already_present: The trip was already paid
+        trip_was_not_completed: The trip was not completed
+      institution:
+        type: "The 'type' parameter is missing or is not valid. Should be one of this: %{allowed_types}"
+    service:
+      generic_error: "There are some errors that need to be fixed: %{errors}"
+    invalid:
+      warehouse_gps: "Invalid gps coordinates for Warehouse with id: %{warehouse_id}"
+      delivery_gps: "Invalid gps coordinates for Delivery location with id: %{delivery_location_id}"

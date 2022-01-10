@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  logistics-api:
+    image: ${TAG}
+    restart: unless-stopped
+    container_name: "logistic-api"
+    logging:
+      options:
+        labels: "imageDeploy,containerName"
+    labels: 
+      imageDeploy: ${TAG}
+      containerName: "logistic-api"
+    ports:
+      - 3030:3030
+    environment:
+      DATABASE_NAME: tiko_logistic_api_db
+      DATABASE_HOST: pg_gis
+      REDIS_HOST: redis
+      USER_ENDPOINT: http://user-api:3010/resources
+      MARKETPLACE_ENDPOINT: http://marketplace-api:9090/resources
+      RAILS_LOG_TO_STDOUT: "true"
+    env_file:
+      - env_files/.env_logistics-api
+
+  logistics-api-migrations:
+    image: tikoglobal2/tiko:logistics-api_ci_migrations
+    container_name: "logistics-api-migrations"
+    environment:
+      DATABASE_NAME: tiko_logistic_api_db
+      DATABASE_HOST: pg_gis
+      REDIS_HOST: redis
+      USER_ENDPOINT: http://user-api:3010/resources
+      MARKETPLACE_ENDPOINT: http://marketplace-api:9090/resources
+    entrypoint: "rails db:create db:migrate"
+
+networks:
+  default:
+    external:
+      name: custom_network
+
+volumes:
+  tiko_data:
+    external: true

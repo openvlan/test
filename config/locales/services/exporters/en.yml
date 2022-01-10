@@ -1,0 +1,27 @@
+en:
+  exporters:
+    delivery:
+      amount: Valor del viaje abonado por comedor
+      refrigerated: Necesita carga de frío
+      payment: ¿Pago del viaje realizado?
+    giver:
+      name: Origen
+    order:
+      amount: Contribución Simbólica
+      payment: ¿Pago del pedido realizado?
+    packages:
+      kg:
+        cooled: Frescos y congelados (Kg)
+        groceries: Frutas o verduras (Kg)
+        regular: No perecederos (Kg)
+        total: Total Kilos
+    receiver:
+      name: Destino
+    shipper:
+      name: Nombre del chofer
+    trip:
+      created_at: Fecha de creación
+      id: ID del viaje
+      status: Estado del viaje
+      net_income: Ingresos netos
+      amount: Valor pagado al chofer

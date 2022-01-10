@@ -1,0 +1,9 @@
+%table.em_main_table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "table-layout: fixed;", :width => "70%"}
+  %tr
+    %td{:height => "10", :style => "font-size: 1px; line-height: 1px"}
+
+  - if step['action'] == 'pickup'
+    = render 'parts/order_row', title: t('user_mailer.driver_trip_canceled_email.pickup'), content: step['address']['formatted_address']
+
+  - if step['action'] == 'deliver'
+    = render 'parts/order_row', title: t('user_mailer.driver_trip_canceled_email.delivery'), content: step['address']['formatted_address']

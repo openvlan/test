@@ -1,0 +1,141 @@
+en:
+  driver_payment_pending_email:
+    payment_method:
+      paypal: PayPal
+      venmo: Venmo
+      ach: bank
+  tiko_employee_payment_pending_email:
+    payment_method:
+      paypal: PayPal
+      venmo: Venmo
+      ach: ACH direct deposit
+  trip_payment_mailer:
+    driver_payment_pending:
+      subject: "TIKO Global - Trip #%{trip_number} payment in process"
+    tiko_employee_payment_pending:
+      subject: "TIKO Global - Trip #%{trip_number} driver payment pending"
+  user_mailer:
+    driver_trip_canceled_email:
+      subject: "TIKO Global - Your trip was cancelled"
+      trip_number: "Trip #%{trip_number} was canceled."
+      details: "Trip details"
+      pickup: "Pickup at:"
+      delivery: "Delivery at:"
+
+    driver_trip_refused_email:
+      subject: "TIKO Global - Driver refused trip assignation"
+      trip_number: "Trip #%{trip_number} was refused by driver."
+      details: "Trip details"
+      delivery_time: "Trip starts at: %{trip_delivery_datetime}"
+      driver: "Driver: %{driver_full_name}"
+
+    trip_canceled_email:
+      subject: "TIKO Global - Your trip was rescheduled"
+      greeting: Hello %{first_name},
+      order_rescheduled: "Your trip for order <b>%{order_id}</b> was rescheduled."
+      rescheduled: "We will be sending you an email with updated information about the trip."
+      seller: "Seller"
+      buyer: "Buyer"
+      driver_details_tbd: "Driver details to be confirmed by email"
+
+    scheduled_trip:
+      subject: "TIKO Global - Order %{order_id} delivery has been scheduled"
+      greeting: "Hello %{first_name},"
+      delivery_details: "Delivery details"
+      delivery_scheduled: "The delivery of your order has been scheduled."
+      pickup_scheduled: "The pickup of this order has been scheduled."
+      pickup_location: "Pickup location:"
+      pickup_date: "Pickup date:"
+      delivery_location: "Delivery location:"
+      delivery_location_2: "Delivery location"
+      delivery_date: "Delivery date:"
+      delivery_date_2: "Delivery date"
+      driver_details: "Driver details"
+      driver_company: "Driver Company:"
+      driver_company_name: "Driver company name"
+      vehicle_information: "Vehicle Information:"
+      vehicle_information_2: "Vehicle information"
+
+    driver_is_on_the_way:
+      subject: "TIKO Global - Order #%{order_id} - Driver is on this way"
+      greeting: "Hello %{first_name},"
+      driver_info: "Here’s the information of the person that will deliver your products:"
+      driver_company: "Driver Company:"
+      vehicle_information: "Vehicle Information:"
+
+    order_delivered:
+      subject: "TIKO Global - Order #%{order_id} delivered successfully"
+      greeting: "Hello %{first_name},"
+      body: "Driver confirmed your order was delivered successfully."
+
+    order:
+      order_id: "Order #%{order_id}"
+      details: "Order details"
+      delivery_method: "Delivery method"
+      delivery_location: "Delivery location"
+      delivery_date_and_time: "Delivery date and time"
+      delivery_date_and_time_content: "To be confirmed soon by email"
+      delivery_date: "Delivery date"
+      driver_details: "Driver details"
+      driver_details_content: "To be confirmed"
+      quantity: "Quantity:"
+      product: "Product"
+      total_weight: "Total weight:"
+      total: "Total"
+      subtotal: "Subtotal"
+      pickup_date_and_time: ""
+      pallet: 'pallet(s)'
+      delivered_in: 'Delivered in:'
+
+
+    shipper_changed:
+      subject: "TIKO - Your delivery will be done by another driver"
+      subject_reschedule: "TIKO - Your delivery is being rescheduled"
+      greeting: "Hello %{first_name},"
+      shipper_reassign: "Your delivery will be done by another driver, we will send you another email with the details soon."
+      order_number: "Order number: #%{order_id}"
+      sorry: "We are sorry for this inconvenience."
+      compromise: "We are working to provide you with the best service."
+      seller: "Seller"
+      buyer: "Buyer"
+      logistics:
+        subject: "TIKO - Trip #%{old_trip_number} was cancelled by the driver"
+        old_trip: "The trip #%{old_trip_number} was cancelled by the driver."
+        new_trip: "A new trip #%{new_trip_number} was automatically created."
+        affected_orders_title: "Affected orders"
+        affected_order: "Order number: #%{order_id}"
+        create_trip: "Create a new trip"
+    driver_trip_assigned_email:
+      subject: "TIKO Drivers - Trip assigned"
+      view_trip: "View trip"
+  payment_method_mailer:
+    driver_payment_method_has_been_updated:
+      subject: "Your default payment method has been updated"
+  driver_mailer:
+    driver_approved_email:
+      subject: "TIKO Global - Great news! You have been approved to drive"
+      welcome: "Welcome to TIKO Global!"
+      application_approved: "You have been approved to drive for TIKO!"
+      button: "Start driving for TIKO"
+      contact_us: "If you need to make any changes or updates to your registration, please contact TIKO Customer Support at"
+    driver_rejected_email:
+      subject: "TIKO Global - Your application to drive has been rejected"
+      body: "Unfortunately, your application to drive for TIKO has been rejected."
+      contact_us: "Feel free to contact us replying to this email if you need further assistance."
+    driver_disabled_email:
+      subject: "TIKO Global - Your application to drive has been rejected"
+      body: "Your driver profile has been disabled."
+      contact_us: "Feel free to contact us replying to this email if you need further assistance."
+    driver_pending_email:
+      subject: "TIKO Global - Your application is pending approval"
+      welcome: "Welcome to TIKO Global!"
+      application_received: "Your application was received and is waiting for approval."
+      get_back: "A Tiko representative will get back to you as soon as possible."
+      contact_us: "Feel free to contact us replying to this email if you need further assistance."
+    driver_awaiting_vetting_email:
+      subject: "TIKO Global - Driver application %{application_number} is ready for vetting"
+      intro: "A new driver application is waiting to be approved."
+      driver: "Driver: %{driver_name}."
+      date_of_application: "Date of application: %{date_of_application}."
+      button: "Let's do this vetting"
+  order_support_number: "+1-(717)-444-8456"

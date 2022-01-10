@@ -1,0 +1,20 @@
+%h1.bold{style: 'padding-top: 30px'}
+  =t('user_mailer.order.order_id', order_id: @order.id)
+= render 'parts/thin_line'
+%h2.bold
+  =t('user_mailer.order.delivery_details')
+%div{style: 'display: flex'}
+  %div
+    = render 'parts/div_title_content_row', title: t('user_mailer.order.delivery_method'), content: @order.delivery_method
+    - if @order.delivery_location&.id
+      = render 'parts/div_title_content_row', title: t('user_mailer.order.delivery_location'), content: [@order.delivery_location.street_1, @order.delivery_location.city, @order.delivery_location.country].reject(&:nil?).join(", ")
+  %div{style: 'flex-grow: 1'}
+  %div{style: 'flex-shrink: 0'}
+    = render 'parts/div_title_content_row', title: t('user_mailer.order.delivery_date'), content: "TBD"
+%p.small.secondary.bold.broad-spacing{style: 'padding: 10px 0;'}
+  = t('user_mailer.trip_canceled_email.driver_details_tbd')
+- if @order.warehouse.street_1.present? && @order.warehouse.city.present? && @order.warehouse.country.present? && !@order.delivery_location.present?
+  = render 'parts/div_title_content_row', title: t('user_mailer.order.delivery_location'), content: [@order.warehouse.street_1,@order.warehouse.city,@order.warehouse.country].reject(&:nil?).join(", ")
+  = render 'parts/div_title_content_row', title: t('user_mailer.order.delivery_date_and_time'), content: "TBD"
+= render 'parts/thin_line'
+= render partial: 'parts/order_from_mkp/order_detail', object: @order, as: 'order'

@@ -1,0 +1,11 @@
+%p
+  =t('driver_mailer.driver_awaiting_vetting_email.intro')
+%br
+%p
+  =t('driver_mailer.driver_awaiting_vetting_email.driver', driver_name: @driver_name)
+%p
+  =t('driver_mailer.driver_awaiting_vetting_email.date_of_application', date_of_application: @application_date)
+%br
+%a{href: @redirect_url, target: '_blank'}
+  %button.primary
+    =t('driver_mailer.driver_awaiting_vetting_email.button')

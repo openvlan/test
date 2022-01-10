@@ -1,0 +1,45 @@
+# PostgreSQL. Versions 9.1 and up are supported.
+#
+# Install the pg driver:
+#   gem install pg
+# On OS X with Homebrew:
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# On OS X with MacPorts:
+#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+# On Windows:
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
+#
+# Configure Using Gemfile
+# gem 'pg'
+#
+
+development:
+  adapter: postgis
+  encoding: unicode
+  database: <%= ENV.fetch("DATABASE_NAME", 'nilus-dev-db-development')%>
+  username: <%= ENV.fetch("DATABASE_USERNAME", 'sa')%>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", 'password')%>
+  host: <%= ENV.fetch("DATABASE_HOST", 'localhost')%>
+  port: <%= ENV.fetch("DATABASE_PORT", '5432') %>
+
+test:
+  adapter: postgis
+  encoding: unicode
+  database: "nilus-dev-db-development-test"
+  username: <%= ENV.fetch("DATABASE_USERNAME", 'sa')%>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", 'password')%>
+  host: <%= ENV.fetch("DATABASE_HOST", 'localhost')%>
+  port: <%= ENV.fetch("DATABASE_PORT", '5432') %>
+
+production:
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: postgis
+  encoding: unicode
+  database: <%= ENV.fetch('DATABASE_NAME') %>
+  username: <%= ENV.fetch('DATABASE_USERNAME') %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') %>
+  host: <%= ENV.fetch('DATABASE_HOST') %>
+  port: <%= ENV.fetch('DATABASE_PORT') %>
+  schema_search_path: "public"

@@ -1,0 +1,15 @@
+%table.em_main_table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "table-layout: fixed;", :width => "100%"}
+  %tr
+    %td
+      =t('user_mailer.trip_canceled_email.order_rescheduled', order_id: @order.id)
+  %tr
+    %td
+      =t('user_mailer.trip_canceled_email.rescheduled')
+  %tr
+    %td.em_height{:height => "10"} 
+  %tr
+    %td
+      = render partial: 'parts/seller_trip_order', locals: { order: @order, location: @location}
+
+
+= render :partial => 'parts/order_contact_footer'

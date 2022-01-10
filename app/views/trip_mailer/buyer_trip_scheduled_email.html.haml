@@ -1,0 +1,41 @@
+%table.em_main_table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "table-layout: fixed;", :width => "100%"}
+  %tr
+    %td
+      =t('user_mailer.scheduled_trip.greeting', first_name: @user.first_name)
+  %tr
+    %td
+      =t('user_mailer.scheduled_trip.delivery_scheduled')
+  %tr
+    %td.em_height{:height => "30"}
+  %tr
+    %td
+      %h3{style: 'color: #30405F'}
+        = t('user_mailer.scheduled_trip.delivery_details')
+
+  %tr
+    %td
+      %div{width: '100%'}
+        %div{style: 'float: left; text-align: left;'}
+          = render 'parts/trip_detail_row', title: t('user_mailer.scheduled_trip.delivery_location_2'), content: @location['street_1'] + ', ' + @location['city'] + ', ' + @location['country']
+        %div{style: 'float: right; text-align: right;'}
+          = render 'parts/trip_detail_row', title: t('user_mailer.scheduled_trip.delivery_date_2'), content: @start_date
+  %tr
+    %td.em_height{:height => "18"}
+
+  = render 'parts/thin_line'
+
+  %tr
+    %td
+      %h3{style: 'color: #30405F'}
+        = t('user_mailer.scheduled_trip.driver_details')
+  %tr
+    %td
+      %div{width: '100%'}
+        %div{style: 'float: left; text-align: left;'}
+          = render 'parts/trip_detail_row', title: t('user_mailer.scheduled_trip.driver_details'), content: @driver.full_name
+        %div{style: 'float: right; text-align: right;'}
+          = render 'parts/trip_detail_row', title: t('user_mailer.scheduled_trip.vehicle_information_2'), content: @driver.vehicle
+  %tr
+    %td.em_height{:height => "90"}
+
+= render :partial => 'parts/order_contact_footer'

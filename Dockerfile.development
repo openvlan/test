@@ -1,0 +1,18 @@
+FROM ruby:2.6.8-alpine
+
+RUN apk update && apk add build-base libpq postgresql-dev libxml2-dev libxslt-dev git
+
+ENV RAILS_ENV development
+ENV BUNDLER_VERSION 2.1.4
+
+WORKDIR /app
+
+COPY Gemfile* ./
+
+RUN gem install bundler:2.1.4
+RUN bundle install
+
+COPY . .
+
+EXPOSE 3030
+ENTRYPOINT ["rails", "s", "-b", "0.0.0.0", "-p", "3030"]

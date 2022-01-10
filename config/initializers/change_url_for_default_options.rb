@@ -1,0 +1,1 @@
+require 'api_utils/initializers/default_to_absolute_url_in_url_for.rb'

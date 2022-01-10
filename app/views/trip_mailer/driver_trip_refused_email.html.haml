@@ -1,0 +1,12 @@
+%p
+  =t('user_mailer.driver_trip_refused_email.trip_number', trip_number: @trip.trip_number)
+%br
+%p
+  =t('user_mailer.driver_trip_refused_email.delivery_time', trip_delivery_datetime: @trip.start_datetime.localtime.strftime("%m-%d at %H:%M"))
+%br
+
+%p
+  =t('user_mailer.driver_trip_refused_email.driver', driver_full_name: @trip.shipper.full_name)
+
+%p
+  %td.em_height{:height => "10"}

@@ -1,0 +1,13 @@
+%div{style: 'margin-top: 25px'}
+= render 'parts/thin_line'
+%div{style: 'display:flex; padding: 10px 0'}
+  %p.secondary{style: 'flex-grow: 1'}
+    =t('user_mailer.order.subtotal')
+  %p{style: 'margin: 0'}
+    = "$#{ApiUtils::NumberFormatter.new.format(order.subtotal)}"
+
+%div{style: 'display:flex; padding: 10px 0'}
+  %p.secondary{style: 'flex-grow: 1'}
+    =t('user_mailer.order.delivery_cost')
+  %p{style: 'margin: 0'}
+    = "$#{ApiUtils::NumberFormatter.new.format(order.delivery_cost)}"

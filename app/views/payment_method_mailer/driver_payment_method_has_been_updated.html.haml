@@ -1,0 +1,7 @@
+%p You have updated your default payment method for future trips to:
+%br
+%p Payment method: #{I18n.t("tiko_employee_payment_pending_email.payment_method.#{@payment_method.payment_method}")}
+- if @payment_method.payment_email
+  %p
+    Email address:
+    %a= mail_to(@payment_method.payment_email)

@@ -1,0 +1,14 @@
+%p
+  =t('user_mailer.shipper_changed.greeting', first_name: user_first_name)
+%br
+%p
+  =t('user_mailer.shipper_changed.shipper_reassign')
+%p
+  =t('user_mailer.shipper_changed.sorry')
+%p
+  =t('user_mailer.shipper_changed.compromise')
+%p
+  %td.em_height{:height => "10"}
+= render 'parts/order_from_mkp/order', locals: { order: @order }
+%div{style: 'height: 25px'}
+= render :partial => 'parts/order_contact_footer'

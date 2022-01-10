@@ -1,0 +1,20 @@
+%h3
+  = order_item.presentation.full_name
+
+%div
+  %small.secondary.bold
+    =t('user_mailer.order.quantity')
+  %small
+    = order_item.quantity
+
+%div
+  %small.secondary.bold
+    =t('user_mailer.order.total_weight')
+  %small
+    = "#{ApiUtils::NumberFormatter.new.format(order_item.presentation.gross_weight_in_lb, {precision: 0})} lb"
+
+%div
+  %small.secondary.bold
+    =t('user_mailer.order.subtotal')
+  %small
+    = "$ #{order_item.total_price.to_s}"

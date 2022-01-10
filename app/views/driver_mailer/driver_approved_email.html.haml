@@ -1,0 +1,11 @@
+%p
+  =t('driver_mailer.driver_approved_email.welcome')
+%br
+%p
+  =t('driver_mailer.driver_approved_email.application_approved')
+%br
+%a{href: @redirect_url, target: '_blank'}
+  %button.primary
+    =t('driver_mailer.driver_approved_email.button')
+
+= render :partial => 'parts/driver_contact_footer'

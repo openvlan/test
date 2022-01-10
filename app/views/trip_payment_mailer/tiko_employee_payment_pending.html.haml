@@ -1,0 +1,19 @@
+%p The following driver has successfully completed a trip and is waiting for payment:
+%br
+%p Driver name: #{@trip_payment.trip.shipper.full_name}
+%br
+%p E-Wallet: #{I18n.t("tiko_employee_payment_pending_email.payment_method.#{@trip_payment.payment_method}")}
+%br
+- if @trip_payment.payment_email
+  %p
+    E-Wallet email address:
+    %a= mail_to(@trip_payment.payment_email)
+  %br
+%p Trip cost: #{number_to_currency(@trip_payment.trip.amount)}
+%br
+%p
+  Trip details:
+  %a{href: "#{@backoffice_url}#{@payment_list_route}", target: '_blank'}= @trip_payment.trip.trip_number
+%br
+%a{href: "#{@backoffice_url}#{@payment_list_route}", target: '_blank'}
+  %button.primary View trip details

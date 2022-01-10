@@ -1,0 +1,24 @@
+FROM ruby:2.6.8-alpine
+
+RUN apk update && apk add build-base libpq postgresql-dev libxml2-dev libxslt-dev git tzdata openssh-client
+
+ENV RAILS_ENV test
+ENV BUNDLER_VERSION 2.1.4
+
+WORKDIR /app
+
+COPY Gemfile* ./
+
+ARG SSH_PRIVATE_KEY
+RUN mkdir ~/.ssh/
+RUN echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_ed25519
+RUN chmod 600 ~/.ssh/id_ed25519
+RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+RUN gem install bundler:2.1.4
+RUN bundle install
+
+COPY . .
+
+EXPOSE 3030
+ENTRYPOINT ["rspec"]

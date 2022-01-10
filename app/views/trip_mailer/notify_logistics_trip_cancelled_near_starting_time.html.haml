@@ -1,0 +1,14 @@
+%p
+  =t('user_mailer.shipper_changed.logistics.old_trip', old_trip_number: @trip.trip_number)
+%h1
+  =t('user_mailer.shipper_changed.logistics.affected_orders_title')
+- @trip.orders.each do |order|
+  %p
+    =t('user_mailer.shipper_changed.logistics.affected_order', order_id: order.marketplace_order_id)
+%br
+%a{href: "#{@backoffice_url}#{@trip_planner_route}", target: '_blank'}
+  %button.primary
+    =t('user_mailer.shipper_changed.logistics.create_trip')
+
+= render :partial => 'parts/order_contact_footer'
+
