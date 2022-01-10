@@ -1,3 +1,5 @@
+requieren  'simplecov' 
+SimpleCov . start 
 require 'support/faker'
 require 'database_cleaner'
 require 'api_utils'
